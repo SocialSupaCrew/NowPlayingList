@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:paddingVertical="11dp">
+
+    <ImageView
+        android:id="@+id/songCover"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/default_song_cover"
+        android:contentDescription="@string/song_cover"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/songTitleTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textColor="@color/grey_800"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/songArtistTv"
+        app:layout_constraintStart_toEndOf="@id/songCover"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tool:text="Song Title" />
+
+    <TextView
+        android:id="@+id/songArtistTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textColor="@color/grey_700"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/songCover"
+        app:layout_constraintTop_toBottomOf="@+id/songTitleTv"
+        tool:text="Song Artist" />
+</android.support.constraint.ConstraintLayout>

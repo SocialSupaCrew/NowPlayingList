@@ -24,19 +24,22 @@ class NotificationListener8 : NotificationListenerService() {
         Log.d("QSD", "onListenerConnected: ")
     }
 
-    override fun onNotificationPosted(sbn: StatusBarNotification?) {
+    override fun onNotificationPosted(sbn: StatusBarNotification) {
         Log.d("QSD", "onNotificationPosted: posted")
 
-        if (sbn == null || !isValidNotification(sbn)) {
+        if (!isValidNotification(sbn)) {
             return
         }
 
         val notificationTitle = getNotificationTitle(sbn)
-
         addSong(getSongTitle(notificationTitle), getSongArtist(notificationTitle))
     }
 
-    private fun isValidNotification(sbn: StatusBarNotification): Boolean {
+    private fun isValidNotification(sbn: StatusBarNotification?): Boolean {
+        if (sbn == null) {
+            return false
+        }
+
         val packageName: String = sbn.packageName
         val extras = sbn.notification.extras
         val notificationTitle = extras.getString("android.title")
@@ -57,10 +60,6 @@ class NotificationListener8 : NotificationListenerService() {
         }.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe()
-    }
-
-    override fun onNotificationRemoved(sbn: StatusBarNotification?) {
-        Log.d("QSD", "onNotificationRemoved: remove")
     }
 
     // TODO: Support more language

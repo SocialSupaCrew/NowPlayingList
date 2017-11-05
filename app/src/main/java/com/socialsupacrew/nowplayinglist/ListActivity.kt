@@ -10,6 +10,8 @@ import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 
 class ListActivity : Activity() {
@@ -37,7 +39,7 @@ class ListActivity : Activity() {
         notificationBtn.setOnClickListener {
 
             val notificationBuilder = Notification.Builder(this, "default")
-                    .setContentTitle("Song title by Singer")
+                    .setContentTitle("Song title $idNotification by Singer $idNotification")
                     .setContentText(null)
                     .setSmallIcon(android.R.drawable.stat_notify_chat)
                     .setAutoCancel(true)
@@ -51,5 +53,22 @@ class ListActivity : Activity() {
             val intent = Intent("android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS")
             startActivity(intent)
         }
+        displaySongs()
+    }
+
+    private fun displaySongs() {
+        NowPlayingList.database?.songDao()?.getAllSongs()
+                ?.subscribeOn(Schedulers.io())
+                ?.observeOn(AndroidSchedulers.mainThread())
+                ?.subscribe { songsList ->
+                    for (song in songsList) {
+                        Log.d("QSD", "Song: ")
+                        Log.d("QSD", "title:" + song.title)
+                        Log.d("QSD", "artist:" + song.artist)
+                        Log.d("QSD", "id:" + song.id)
+                        Log.d("QSD", "date:" + song.date)
+                        Log.d("QSD", "-----------------------")
+                    }
+                }
     }
 }

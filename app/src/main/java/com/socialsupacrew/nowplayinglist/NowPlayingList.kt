@@ -24,7 +24,8 @@ class NowPlayingList : Application() {
             return
         }
 
-        NowPlayingList.database = Room.databaseBuilder(this, SongDatabase::class.java, "song-db").build()
+        NowPlayingList.database = Room.databaseBuilder(this, SongDatabase::class.java, "song-db")
+                .build()
     }
 
     private fun getDeviceLanguage() = Locale.getDefault().isO3Language.toUpperCase()

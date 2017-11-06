@@ -9,7 +9,7 @@ import io.reactivex.Flowable
 @Dao
 interface SongDao {
 
-    @Query("SELECT * FROM song")
+    @Query("SELECT * FROM song ORDER BY date DESC")
     fun getAllSongs(): Flowable<List<Song>>
 
     @Query("SELECT * FROM song WHERE id = :arg0")

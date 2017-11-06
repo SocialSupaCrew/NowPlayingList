@@ -32,6 +32,7 @@ class NotificationListener9 : NotificationListenerService() {
         }
 
         val notificationTitle = getNotificationTitle(sbn)
+        // TODO: find solution when song title or artist contain the word separator
         addSong(getSongTitle(notificationTitle), getSongArtist(notificationTitle))
     }
 

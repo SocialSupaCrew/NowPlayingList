@@ -8,12 +8,10 @@ import java.util.*
 @Entity(tableName = "song")
 data class Song constructor(
         @ColumnInfo(name = "title") var title: String = "",
-        @ColumnInfo(name = "artist") var artist: String = "") {
+        @ColumnInfo(name = "artist") var artist: String = "",
+        @ColumnInfo(name = "date") var date: Date = Date()) {
 
     @ColumnInfo(name = "id")
     @PrimaryKey(autoGenerate = true)
     var id: Long = 0
-
-    @ColumnInfo(name = "date")
-    var date: Date = Date()
 }

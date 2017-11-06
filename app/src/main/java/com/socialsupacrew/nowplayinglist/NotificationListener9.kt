@@ -10,7 +10,7 @@ import io.reactivex.schedulers.Schedulers
 import java.util.*
 
 
-class NotificationListener8 : NotificationListenerService() {
+class NotificationListener9 : NotificationListenerService() {
 
     private val nowPlayingPackageName: String = "com.google.intelligence.sense"
 
@@ -47,7 +47,7 @@ class NotificationListener8 : NotificationListenerService() {
         return packageName == nowPlayingPackageName && notificationTitle != null
     }
 
-    private fun getNotificationTitle(sbn: StatusBarNotification) : String {
+    private fun getNotificationTitle(sbn: StatusBarNotification): String {
         val extras = sbn.notification.extras
         return extras.getString("android.title")
     }
@@ -62,11 +62,9 @@ class NotificationListener8 : NotificationListenerService() {
                 .subscribe()
     }
 
-    // TODO: Support more language
     private fun getSongArtist(notificationTitle: String) =
-            Arrays.asList(notificationTitle.split(" by "))[0][1]
+            Arrays.asList(notificationTitle.split(NowPlayingList.WORD_SONG_SEPARATOR!!))[0][1]
 
-    // TODO: Support more language
     private fun getSongTitle(notificationTitle: String) =
-            Arrays.asList(notificationTitle.split(" by "))[0][0]
+            Arrays.asList(notificationTitle.split(NowPlayingList.WORD_SONG_SEPARATOR!!))[0][0]
 }

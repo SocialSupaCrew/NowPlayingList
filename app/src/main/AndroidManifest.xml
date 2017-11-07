@@ -21,7 +21,7 @@
         </activity>
 
         <service
-            android:name=".NotificationListener9"
+            android:name=".NotificationListener11"
             android:label="@string/app_name"
             android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
             <intent-filter>

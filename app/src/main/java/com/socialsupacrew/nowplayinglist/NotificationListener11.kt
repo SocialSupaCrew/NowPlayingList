@@ -1,5 +1,6 @@
 package com.socialsupacrew.nowplayinglist
 
+import android.content.Intent
 import android.service.notification.NotificationListenerService
 import android.service.notification.StatusBarNotification
 import android.util.Log
@@ -10,7 +11,7 @@ import io.reactivex.schedulers.Schedulers
 import java.util.*
 
 
-class NotificationListener9 : NotificationListenerService() {
+class NotificationListener11 : NotificationListenerService() {
 
     private val nowPlayingPackageName: String = "com.google.intelligence.sense"
 
@@ -54,18 +55,24 @@ class NotificationListener9 : NotificationListenerService() {
     }
 
     private fun addSong(title: String, artist: String) {
-        val song = Song(title, artist)
+        val song = Song(0, title, artist, Date())
 
-        Single.fromCallable {
-            NowPlayingList.database?.songDao()?.insert(song)
-        }.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe()
+        Single.fromCallable { NowPlayingList.database?.songDao()?.insert(song) }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe()
+        refreshList()
     }
 
-    private fun getSongArtist(notificationTitle: String) =
-            Arrays.asList(notificationTitle.split(NowPlayingList.WORD_SONG_SEPARATOR!!))[0][1]
+    private fun refreshList() {
+        val intent = Intent()
+        intent.action = ListActivity.BROADCAST_SONG_INSERTED
+        sendBroadcast(intent)
+    }
 
     private fun getSongTitle(notificationTitle: String) =
-            Arrays.asList(notificationTitle.split(NowPlayingList.WORD_SONG_SEPARATOR!!))[0][0]
+        Arrays.asList(notificationTitle.split(NowPlayingList.WORD_SONG_SEPARATOR!!))[0][0]
+
+    private fun getSongArtist(notificationTitle: String) =
+        Arrays.asList(notificationTitle.split(NowPlayingList.WORD_SONG_SEPARATOR!!))[0][1]
 }

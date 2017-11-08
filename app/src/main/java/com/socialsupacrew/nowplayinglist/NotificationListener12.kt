@@ -11,7 +11,7 @@ import io.reactivex.schedulers.Schedulers
 import java.util.*
 
 
-class NotificationListener11 : NotificationListenerService() {
+class NotificationListener12 : NotificationListenerService() {
 
     private val nowPlayingPackageName: String = "com.google.intelligence.sense"
 

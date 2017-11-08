@@ -71,7 +71,9 @@ class FilterTouchHelperCallback(
     }
 
     override fun getSwipeDirs(rv: RecyclerView, viewHolder: ViewHolder): Int {
-        return makeMovementFlags(0, START)
+        // can only swipe-dismiss certain sources
+        val swipeDir = if (viewHolder.itemViewType == ListAdapter.SONG) START else 0
+        return makeMovementFlags(0, swipeDir)
     }
 
     // make deleting a deliberate gesture

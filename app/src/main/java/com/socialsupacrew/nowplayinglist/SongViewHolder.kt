@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.song_item.view.*
 import java.text.DateFormat
 import java.util.*
 
-class ListHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class SongViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     private val titleTv: TextView = itemView.songTitleTv
     private val artistTv: TextView = itemView.songArtistTv

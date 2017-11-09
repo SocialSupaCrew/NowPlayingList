@@ -12,11 +12,11 @@
  * permissions and limitations under the License.
  */
 
-package com.socialsupacrew.nowplayinglist
+package com.socialsupacrew.nowplayinglist.util
 
 /**
  * Interface for events related to swipe dismissing filters
  */
-interface FilterSwipeDismissListener {
+interface SongSwipeDismissListener {
     fun onItemDismiss(position: Int)
 }

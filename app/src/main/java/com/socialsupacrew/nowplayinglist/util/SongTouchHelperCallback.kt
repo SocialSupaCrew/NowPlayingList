@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.socialsupacrew.nowplayinglist
+package com.socialsupacrew.nowplayinglist.util
 
 import android.content.Context
 import android.graphics.*
@@ -23,14 +23,15 @@ import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.RecyclerView.ViewHolder
 import android.support.v7.widget.helper.ItemTouchHelper
 import android.support.v7.widget.helper.ItemTouchHelper.START
-import com.socialsupacrew.nowplayinglist.util.setTranslation
+import com.socialsupacrew.nowplayinglist.ListAdapter
+import com.socialsupacrew.nowplayinglist.R
 
 /**
  * Callback for swiping a custom search filter to delete it.
  */
-class FilterTouchHelperCallback(
-        private val listener: FilterSwipeDismissListener,
-        context: Context
+class SongTouchHelperCallback(
+    private val listener: SongSwipeDismissListener,
+    context: Context
 ) : ItemTouchHelper.SimpleCallback(0, START) {
 
     private val backgroundColor: Int
@@ -52,11 +53,15 @@ class FilterTouchHelperCallback(
 
     init {
         val res = context.resources
-        backgroundColor = ContextCompat.getColor(context, R.color.grey_900)
-        shadowColor = ContextCompat.getColor(context, R.color.shadow)
-        deleteColor = ContextCompat.getColor(context, R.color.red_400)
+        backgroundColor = ContextCompat.getColor(context,
+                R.color.grey_900)
+        shadowColor = ContextCompat.getColor(context,
+                R.color.shadow)
+        deleteColor = ContextCompat.getColor(context,
+                R.color.red_400)
         iconColorFilter = deleteColor
-        iconPadding = res.getDimensionPixelSize(R.dimen.padding_normal)
+        iconPadding = res.getDimensionPixelSize(
+                R.dimen.padding_normal)
         // faking elevation light-source; so use different shadow sizes
         topShadowHeight = res.getDimension(R.dimen.spacing_micro)
         bottomShadowHeight = topShadowHeight / 2f
@@ -181,7 +186,8 @@ class FilterTouchHelperCallback(
 
     private fun initialize(context: Context) {
         if (!initialized) {
-            deleteIcon = ContextCompat.getDrawable(context, R.drawable.ic_delete_white)
+            deleteIcon = ContextCompat.getDrawable(context,
+                    R.drawable.ic_delete_white)
             topShadowPaint = Paint().apply {
                 shader = LinearGradient(0f, 0f, 0f, topShadowHeight, shadowColor, 0, CLAMP)
             }

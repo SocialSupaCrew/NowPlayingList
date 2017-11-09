@@ -5,6 +5,7 @@ import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import com.socialsupacrew.nowplayinglist.data.Song
+import com.socialsupacrew.nowplayinglist.util.SongSwipeDismissListener
 import com.socialsupacrew.nowplayinglist.util.formatSongList
 import com.socialsupacrew.nowplayinglist.util.inflate
 import io.reactivex.Single
@@ -14,7 +15,7 @@ import java.util.*
 
 class ListAdapter(
     private val context: Context,
-    private var items: List<Any>) : RecyclerView.Adapter<RecyclerView.ViewHolder>(), FilterSwipeDismissListener {
+    private var items: List<Any>) : RecyclerView.Adapter<RecyclerView.ViewHolder>(), SongSwipeDismissListener {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {

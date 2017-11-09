@@ -10,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.helper.ItemTouchHelper
 import android.view.View
 import com.socialsupacrew.nowplayinglist.data.Song
+import com.socialsupacrew.nowplayinglist.util.SongTouchHelperCallback
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_list.*
@@ -57,7 +58,8 @@ class ListActivity : Activity() {
         listAdapter = ListAdapter(this, emptySongList)
         songsRecyclerView.adapter = listAdapter
 
-        val callback = FilterTouchHelperCallback(listAdapter, this)
+        val callback = SongTouchHelperCallback(listAdapter,
+                this)
         val itemTouchHelper = ItemTouchHelper(callback)
         itemTouchHelper.attachToRecyclerView(songsRecyclerView)
 

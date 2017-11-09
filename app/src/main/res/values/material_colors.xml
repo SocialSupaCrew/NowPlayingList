@@ -261,8 +261,6 @@
     <color name="grey_700">#616161</color>
     <color name="grey_800">#424242</color>
     <color name="grey_900">#212121</color>
-    <color name="grey_black_1000">#000000</color>
-    <color name="grey_white_1000">#ffffff</color>
 
     <color name="blue_grey_50">#eceff1</color>
     <color name="blue_grey_100">#cfd8dc</color>
@@ -274,4 +272,7 @@
     <color name="blue_grey_700">#455a64</color>
     <color name="blue_grey_800">#37474f</color>
     <color name="blue_grey_900">#263238</color>
+
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
 </resources>

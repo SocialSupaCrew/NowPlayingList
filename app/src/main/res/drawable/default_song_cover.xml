@@ -4,13 +4,13 @@
         <shape android:shape="oval">
             <solid android:color="@color/grey_500" />
             <size
-                android:width="50dp"
-                android:height="50dp" />
+                android:width="40dp"
+                android:height="40dp" />
         </shape>
     </item>
     <item
-        android:width="35dp"
-        android:height="35dp"
+        android:width="25dp"
+        android:height="25dp"
         android:drawable="@drawable/ic_audiotrack_white"
         android:gravity="center" />
 </layer-list>

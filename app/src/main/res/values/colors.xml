@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="shadow">#4C000000</color>
+    <color name="background">@color/grey_200</color>
 </resources>

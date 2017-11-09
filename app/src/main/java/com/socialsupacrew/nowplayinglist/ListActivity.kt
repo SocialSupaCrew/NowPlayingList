@@ -6,7 +6,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
-import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.helper.ItemTouchHelper
 import android.view.View
@@ -22,7 +21,7 @@ class ListActivity : Activity() {
 //        getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 //    }
 
-//    private var idNotification: Int = 0
+    private var idNotification: Int = 0
     private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var listAdapter: ListAdapter
     private var emptySongList: List<Song> = ArrayList()
@@ -48,8 +47,10 @@ class ListActivity : Activity() {
 
         registerBroadcastReceiver()
 
-        songsRecyclerView.addItemDecoration(
-                DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+        val dividerDrawable = getDrawable(R.drawable.divider)
+        val dividerItemDecoration = ListItemDecoration(dividerDrawable)
+        songsRecyclerView.addItemDecoration(dividerItemDecoration)
+
         linearLayoutManager = LinearLayoutManager(this)
         songsRecyclerView.layoutManager = linearLayoutManager
 

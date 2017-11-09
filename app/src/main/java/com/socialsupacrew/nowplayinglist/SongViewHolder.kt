@@ -18,6 +18,9 @@ class SongViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         titleTv.text = song.title
         artistTv.text = song.artist
         hourTv.text = getHourFromDate(song.date)
+        itemView.setOnClickListener({
+            //            DetailActivity.start(itemView.context)
+        })
     }
 
     private fun getHourFromDate(date: Date): String {

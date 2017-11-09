@@ -28,6 +28,15 @@
                 <action android:name="android.service.notification.NotificationListenerService" />
             </intent-filter>
         </service>
+
+        <activity
+            android:name=".detail.DetailActivity"
+            android:label="@string/title_activity_detail"
+            android:parentActivityName=".ListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.socialsupacrew.nowplayinglist.ListActivity" />
+        </activity>
     </application>
 
 </manifest>
